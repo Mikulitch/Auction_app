@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text = "${name}"/>
+    <link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+    <div class = "index-content">
+        <div th:insert="blocks/menu :: menu"></div>
+
+        <!-- Main block-->
+        <div class = "index-right-content">
+            <div class="main-top-news">
+                <div class="main-top-news-img">
+                    <a href="https://realt.by/news/article/28723/">
+                        <img src="https://realt.by/typo3temp/pics/9f/79/9f79f2ebebecdd093aa8f276fefa5168.jpg" width="100" height="100" border="0" alt="">
+                    </a> </div> <div class="main-top-news-text">
+                <p>Новости</p>
+                <div th:each = "el : ${news}" class = "alert alert-info mt-2">
+                    <h3 th:text = "${el.title}"/>
+                    <p th:text = "${el.full_text}"/>
+
+                </div></p> </div> </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--<button onclick="location.href='/list'">Auctions</button>
+</br>
+<button onclick="location.href='/logoTab'">Search</button>-->
+
+
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>

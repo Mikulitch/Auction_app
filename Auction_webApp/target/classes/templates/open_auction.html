@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Перечень участков</title>
+    <link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+    <div class = "index-content">
+        <div th:insert="blocks/menu :: menu"></div>
+
+        <!-- Main block-->
+        <div class = "index-right-content">
+            <div class="main-top-news">
+                <div class="main-top-news-img">
+                    <p align="center"> Аукцион состоится 26 декабря 2020 года в 10.00 по адресу: г. Минск, ул. Чкалова, 5.
+                        Прием документов, консультации по вопросам участия в аукционе и ознакомление с имеющейся документацией осуществляются по адресу: г. Минск, ул. Чкалова, 5, каб. 320, по 7 сентября 2020 г. включительно в рабочие дни с 08.30 до 13.00 и 13.30 до 17.00.
+                        Контактные телефоны: + 375 (17) 516-80-64, +375 (44) 789-10-18.
+                        Задатки для участия в аукционе перечисляются не позднее 7 сентября 2020 года.
+                    </p>
+
+
+                <!--    <p align="center"> Аукцион состоится 12 января 2021 года в 10.00 по адресу: г. Минск, ул. Чкалова, 5.
+                        Прием документов, консультации по вопросам участия в аукционе и ознакомление с имеющейся документацией осуществляются по адресу: г. Минск, ул. Чкалова, 5, каб. 320, по 7 сентября 2020 г. включительно в рабочие дни с 08.30 до 13.00 и 13.30 до 17.00.
+                        Контактные телефоны: + 375 (17) 516-80-64, +375 (44) 789-10-18.
+                        Задатки для участия в аукционе перечисляются не позднее 7 сентября 2020 года.
+                    </p>-->
+                  <!--  <h1><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=mymaps%3Aj7BF6SmMLrYkSIIjKb4LUmFXxSNye1PF&amp;width=800&amp;height=480&amp;lang=ru_RU&amp;scroll=true"></script> </h1>-->
+               <!--     <h1><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=mymaps%3AK9IQZQI_8BCeCVuGsZRl9bvfZ4AKuKhc&amp;width=800&amp;height=480&amp;lang=ru_RU&amp;scroll=true"></script></h1>
+-->
+
+
+
+
+
+
+                    <div th:if="${ponts}">
+
+<h1><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=mymaps%3Aj7BF6SmMLrYkSIIjKb4LUmFXxSNye1PF&amp;width=800&amp;height=480&amp;lang=ru_RU&amp;scroll=true"></script> </h1>
+
+                        </div>
+                    </div>
+
+                    <div th:if="${ponts1}">
+
+                        <h1><script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=mymaps%3AK9IQZQI_8BCeCVuGsZRl9bvfZ4AKuKhc&amp;width=800&amp;height=480&amp;lang=ru_RU&amp;scroll=true"></script></h1>
+
+                        </div>
+                    </div>
+
+
+
+
+                    <!--<div th:if ="${ponts1}">
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=mymaps%3AK9IQZQI_8BCeCVuGsZRl9bvfZ4AKuKhc&amp;width=800&amp;height=480&amp;lang=ru_RU&amp;scroll=true"></script>
+                    </div>-->
+                        <!--    <h3>Поиск </h3>
+                    <a href="https://realt.by/news/article/28723/">
+                        <img src="https://realt.by/typo3temp/pics/9f/79/9f79f2ebebecdd093aa8f276fefa5168.jpg" width="100" height="100" border="0" alt="">
+                    </a> </div> <div class="main-top-news-text">-->
+
+
+                        <table border="1">
+                            <caption>Таблица участков</caption>
+                            <tr>
+                                <th>№ лота</th>
+                                <th>Адрес земельного участка</th>
+                                <th>Кадастровый номер земельного участка</th>
+                                <th>Площадь земельного участка, га </th>
+                                <th>Инженерная инфраструктура *</th>
+                                <th>Расходы по подготовке документации для проведения аукциона, бел. руб.</th>
+                                <th>Начальная цена земельного участка, бел. руб.</th>
+                                <th>Сумма задатка, бел. руб.</th>
+                            </tr>
+                            <div th:each = "el : ${ponts}" class = "alert alert-info mt-2">
+
+                               <div th:if="${el.id_auction==2}">
+                                <tr><td><p th:text = "${el.pont_number}"/></td>
+                                <td><p th:text = "${el.adress}"/></td>
+                                <td><p th:text = "${el.cad_number}"/></td>   <!--здесь будет ссылка на карту -->
+                                <td><p th:text = "${el.area}"/></td>
+                                <td><p th:text = "${el.communications}"/></td>
+                                <td><p th:text = "${el.costs}"/></td>
+                                <td><p th:text = "${el.initial_cost}"/></td>
+                                <td><p th:text = "${el.deposit}"/></td>
+
+                            </tr>
+                               </div>
+                            </div>
+                            <div th:each = "el : ${ponts1}" class = "alert alert-info mt-2">
+
+                                <div th:if="${el.id_auction==1}">
+                                <tr><td><p th:text = "${el.pont_number}"/></td>
+                                    <td><p th:text = "${el.adress}"/></td>
+                                    <td><p th:text = "${el.cad_number}"/></td>   <!--здесь будет ссылка на карту -->
+                                    <td><p th:text = "${el.area}"/></td>
+                                    <td><p th:text = "${el.communications}"/></td>
+                                    <td><p th:text = "${el.costs}"/></td>
+                                    <td><p th:text = "${el.initial_cost}"/></td>
+                                    <td><p th:text = "${el.deposit}"/></td>
+
+                                </tr>
+                                </div>
+
+                            </div>
+                        </table>
+
+
+                    <br/>
+            <div th:if="${ponts1}">
+
+                <a th:href="'/auction/add-auct-participant/'+ ${id}">ОФОРМИТЬ ЗАЯВЛЕНИЕ НА УЧАСТИЕ В АУКЦИОНЕ </a>
+
+            </div>
+            <div th:if="${ponts}">
+                <a th:href="'/auction/add-auct-participant/'+ ${id}">ОФОРМИТЬ ЗАЯВЛЕНИЕ НА УЧАСТИЕ В АУКЦИОНЕ </a>
+
+
+            </div>
+
+                    <!--<h3 th:text = "${el.title}"/>
+                    <p th:text = "${el.anons}"/>
+                    <a th:href="'/news/' + ${el.id}">Поброднее</a>-->
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--<button onclick="location.href='/list'">Auctions</button>
+</br>
+<button onclick="location.href='/logoTab'">Search</button>-->
+
+</div>
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>

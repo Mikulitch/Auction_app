@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text = "${name}"/>
+    <link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+    <div class = "index-content">
+        <div th:insert="blocks/menu :: menu"></div>
+
+        <!-- Main block-->
+        <div class = "index-right-content">
+            <div class="main-top-news">
+                <h3>Поиск </h3>
+
+                <p>Для поиска участка введите название населенного пункта</p>   <br/>
+                <form method="post" action ="search"><!--data-th-action="@{/waterquality/data/search-results}"
+                      data-th-object="${groundWater}"-->
+
+
+                    <input type = "text" name = "filter" />
+
+                    <button type="submit" class="send_btn1" name="findcity" >Найти</button><!--data-th-value="#{button.action.search}"   data-th-text="#{button.label.search}" -->
+
+                </form><br/>
+                              <table border="1">
+                    <caption>Таблица участков</caption>
+                    <tr>
+                        <th>Населенный пункт</th>
+                        <th>Площадь земельного участка, га</th>
+                        <th>Инженерная инфраструктура *</th>
+                        <th>Участок выставлен на аукцион</th>
+                                            </tr>
+                    <div th:each = "el : ${searchlist}" class = "alert alert-info mt-2">
+
+
+                            <tr><td><p th:text = "${el.adress}"/></td>
+                                <!--<td><p th:text = "${el.cad_number}"/></td>-->
+                                <td><p th:text = "${el.area}"/></td>
+                                <td><p th:text = "${el.communications}"/></td>
+                                <td><div th:switch="${el.id_auction}">
+                                    <p th:case="'1'"><a href="http://auctionspring-env.eba-dmfmqkup.eu-central-1.elasticbeanstalk.com/auction/1" align="center">Участок на аукционе</a></p>
+                                    <p th:case="'2'" ><a href="http://auctionspring-env.eba-dmfmqkup.eu-central-1.elasticbeanstalk.com/auction/2" align="center">Участок на аукционе</a></p>
+                                    <p th:case="*">Участок в списках незанятых</p>
+                                </div></td>
+                            </tr>
+                    </div>
+                        <div th:each = "el : ${searchlist1}" class = "alert alert-info mt-2">
+                            <tr><td><p th:text = "${el.adress}"/></td>
+                                <!--<td><p th:text = "${el.cad_number}"/></td>-->
+                                <td><p th:text = "${el.area}"/></td>
+                                <td><p th:text = "${el.communications}"/></td>
+                                <td><a href="http://auctionspring-env.eba-dmfmqkup.eu-central-1.elasticbeanstalk.com/freepont" align="center">Участок в списках незанятых</a>
+
+                                </td>
+                            </tr>
+
+
+                    </div>
+
+
+
+
+                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <br/>
+
+
+                <div class="main-top-news-text">
+
+                </div> </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--<button onclick="location.href='/list'">Auctions</button>
+</br>
+<button onclick="location.href='/logoTab'">Search</button>-->
+
+
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>

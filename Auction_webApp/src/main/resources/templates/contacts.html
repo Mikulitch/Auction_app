@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text = "${name}"/>
+    <link rel="stylesheet" href="/css/w3.css">
+</head>
+<body>
+<div class="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+    <div class = "index-content">
+        <div th:insert="blocks/menu :: menu"></div>
+
+        <!-- Main block-->
+        <div class = "index-right-content">
+            <div class="main-top-news">
+                <h2>Контакты</h2>
+
+                <div class="main-top-news-text">
+                <p>Телефон: 8 (033) 683 04 90 </p>
+                    <p>Электронная почта: Mikulich1.19@gmail.com</p>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!--<button onclick="location.href='/list'">Auctions</button>
+</br>
+<button onclick="location.href='/logoTab'">Search</button>-->
+
+
+
+<header th:insert="blocks/footer :: footer"></header>
+</body>
+</html>
